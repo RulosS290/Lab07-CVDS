@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
+<th:block th:replace="fragments/general.html::headerfiles('Example Page')"></th:block>
+<body>
+<main>
+    <h2 class="display-6 text-center mb-4">To Do Item</h2>
+    <div class="table-responsive">
+        <table class="table table-info">
+            <thead>
+            <tr>
+                <th scope="col">Property</th>
+                <th scope="col">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">id</th>
+                <td><p th:text="${employeesList.id}"/></td>
+            </tr>
+            <tr>
+                <th scope="row">First Name</th>
+                <td><p th:text="${employeesList.first_Name}"/></td>
+            </tr>
+            <tr>
+                <th scope="row">Last Name</th>
+                <td><p th:text="${employeesList.last_Name}"/></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</main>
+<footer th:replace="fragments/empty-footer :: empty-footer"></footer>
+
+</body>
+</html>
