@@ -1,20 +1,31 @@
 package co.edu.escuelaing.cvds.lab7.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Setter
 @Getter
 public class EmployeesList {
+    @Id
+    @Column(name = "id")
     private Integer id;
-    private String first_Name;
-    private String last_Name;
+    @Column(name = "first_Name")
+    private String firstName;
+    @Column(name = "last_Name")
+    private String lastName;
 
-    public EmployeesList(Integer id, String first_Name, String last_Name) {
+    public EmployeesList(Integer id, String firstName, String lastName) {
         this.id = id;
-        this.first_Name = first_Name;
-        this.last_Name = last_Name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
+    public EmployeesList() {
+
+    }
 }
 

@@ -1,10 +1,27 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
-<th:block th:replace="fragments/general.html::headerfiles('Employees Page')"></th:block>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+</head>
 <body>
-<main>
-    <h1 th:text="'Hello, ' + ${name} + '!'"/>
-</main>
-<footer th:replace="fragments/general::empty-footer"></footer>
+<h1>Lista de Empleados</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

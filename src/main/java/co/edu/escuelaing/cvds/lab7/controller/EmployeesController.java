@@ -1,18 +1,19 @@
 package co.edu.escuelaing.cvds.lab7.controller;
 
-import co.edu.escuelaing.cvds.lab7.model.EmployeesList;
+import co.edu.escuelaing.cvds.lab7.model.Configuration;
+import co.edu.escuelaing.cvds.lab7.service.ConfigurationService;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
-@RequestMapping(value = "/employees")
+@RequestMapping(value = "/retrieve")
 public class EmployeesController {
+
     private final EmployeeService employeeService;
 
     @Autowired
@@ -20,16 +21,9 @@ public class EmployeesController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("")
-    public String getEmployees(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
+    @GetMapping("/read")
+    public String example(Model model) {
+        model.addAttribute("employees", employeeService.getAllEmployees());
         return "employees";
-    }
-
-    @RequestMapping("/list/{id}")
-    public String getEmployeesList(@PathVariable Integer id, Model model) {
-        EmployeesList employeesList = employeeService.getItem(id);
-        model.addAttribute("employeesList", employeesList);
-        return "employeeslist";
     }
 }

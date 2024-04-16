@@ -1,8 +1,17 @@
 package co.edu.escuelaing.cvds.lab7.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class ToDoItem {
+    @Getter
+    @Setter
     private Integer id;
+    @Getter
+    @Setter
     private Integer userId;
+    @Setter
+    @Getter
     private String title;
     private Boolean completed;
 
@@ -14,30 +23,6 @@ public class ToDoItem {
         this.userId = userId;
         this.title = title;
         this.completed = completed;
-    }
-
-    public void setId(Integer id){
-        this.id = id;
-    }
-
-    public Integer getId(){
-        return id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public void setTitle(String title){
-        this.title = title;
-    }
-
-    public String  getTitle(){
-        return title;
     }
 
     public void setCompleted(boolean completed){
