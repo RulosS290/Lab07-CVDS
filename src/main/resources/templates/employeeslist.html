@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
+<html xmlns:th="http://www.thymeleaf.org/" lang="en"><!-- //NOSONAR -->
 <th:block th:replace="fragments/general.html::headerfiles('Example Page')"></th:block>
 <body>
 <main>
-    <h2 class="display-6 text-center mb-4">To Do Item</h2>
+    <h2 class="display-6 text-center mb-4">EmployeesList</h2>
     <div class="table-responsive">
         <table class="table table-info">
             <thead>
@@ -15,15 +15,15 @@
             <tbody>
             <tr>
                 <th scope="row">id</th>
-                <td><p th:text="${employeesList.id}"/></td>
+                <td><p th:text="${employeesList.id}"/></td> <!-- Corregido aquí -->
             </tr>
             <tr>
                 <th scope="row">First Name</th>
-                <td><p th:text="${employeesList.first_Name}"/></td>
+                <td><p th:text="${employeesList.first_Name}"/></td> <!-- Corregido aquí -->
             </tr>
             <tr>
                 <th scope="row">Last Name</th>
-                <td><p th:text="${employeesList.last_Name}"/></td>
+                <td><p th:text="${employeesList.last_Name}"/></td> <!-- Corregido aquí -->
             </tr>
 
             </tbody>

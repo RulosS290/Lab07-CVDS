@@ -1,6 +1,6 @@
 package co.edu.escuelaing.cvds.lab7.service;
 
-import co.edu.escuelaing.cvds.lab7.model.Employees_List;
+import co.edu.escuelaing.cvds.lab7.model.EmployeesList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,9 @@ public class EmployeeService {
 
     static final String URL_API = "https://jsonplaceholder.typicode.com/todos/";
 
-    public Employees_List getItem(Integer id) {
+    public EmployeesList getItem(Integer id) {
         String uri = URL_API + id;
-        ResponseEntity<Employees_List> response = restTemplate.getForEntity(uri, Employees_List.class);
+        ResponseEntity<EmployeesList> response = restTemplate.getForEntity(uri, EmployeesList.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             return response.getBody();

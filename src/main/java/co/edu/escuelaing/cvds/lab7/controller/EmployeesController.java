@@ -1,6 +1,6 @@
 package co.edu.escuelaing.cvds.lab7.controller;
 
-import co.edu.escuelaing.cvds.lab7.model.Employees_List;
+import co.edu.escuelaing.cvds.lab7.model.EmployeesList;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = "/Employees")
+@RequestMapping(value = "/employees")
 public class EmployeesController {
     private final EmployeeService employeeService;
 
@@ -21,15 +21,15 @@ public class EmployeesController {
     }
 
     @GetMapping("")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String getEmployees(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
-        return "greeting";
+        return "employees";
     }
 
     @RequestMapping("/list/{id}")
     public String getEmployeesList(@PathVariable Integer id, Model model) {
-        Employees_List employeesList = employeeService.getItem(id);
-        model.addAttribute("EmployeesList", employeesList);
-        return "employees_list";
+        EmployeesList employeesList = employeeService.getItem(id);
+        model.addAttribute("employeesList", employeesList);
+        return "employeeslist";
     }
 }
