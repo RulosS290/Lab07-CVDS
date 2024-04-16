@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface EmployeesListRepository extends JpaRepository<EmployeesList, Integer> {
-    public List<EmployeesList> findById(Integer id);
+    public List<EmployeesList> findByIds(Integer id);
 
 }

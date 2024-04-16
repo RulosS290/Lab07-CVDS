@@ -26,7 +26,7 @@ public class EmployeeService {
     }
 
     public EmployeesList getEmployee(Integer id) {
-        return employeesListRepository.findById(id).get(1);
+        return employeesListRepository.findByIds(id).get(1);
     }
 
     public List<EmployeesList> getAllEmployees() {
@@ -34,7 +34,7 @@ public class EmployeeService {
     }
 
     public EmployeesList updateEmployee(EmployeesList employeesList) {
-        if (employeesListRepository.findById(employeesList.getId()).size() == 0) {
+        if (employeesListRepository.findByIds(employeesList.getId()).size() == 0) {
             return employeesListRepository.save(employeesList);
         }
 
