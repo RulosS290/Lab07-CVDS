@@ -20,8 +20,8 @@ public class EmployeeService {
         return employeesListRepository.save(employee);
     }
 
-    public Employee getEmployee(int id) {
-        return employeesListRepository.findById(id).get(1);
+    public Employee getEmployee(int Employee_id) {
+        return employeesListRepository.findById(Employee_id).get(1);
     }
 
     public List<Employee> getAllEmployees() {
@@ -29,14 +29,14 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee) {
-        if (employeesListRepository.findById(employee.getId()).size() == 0) {
+        if (employeesListRepository.findById(employee.getEmployee_id()).size() == 0) {
             return employeesListRepository.save(employee);
         }
 
         return null;
     }
 
-    public void deleteEmployee(int id) {
-        employeesListRepository.deleteById(id);
+    public void deleteEmployee(int Employee_id) {
+        employeesListRepository.deleteById(Employee_id);
     }
 }

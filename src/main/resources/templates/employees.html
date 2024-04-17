@@ -10,16 +10,20 @@
 <table border="1">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
+        <th>EMPLOYEE ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>ROLE</th>
+        <th>SALARY</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="employee : ${employees}">
-        <td th:text="${employee.id}"></td>
-        <td th:text="${employee.firstName}"></td>
-        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.Employee_id}"></td>
+        <td th:text="${employee.First_name}"></td>
+        <td th:text="${employee.Last_Name}"></td>
+        <td th:text="${employee.Role}"></td>
+        <td th:text="${employee.Salary}"></td>
     </tr>
     </tbody>
 </table>
