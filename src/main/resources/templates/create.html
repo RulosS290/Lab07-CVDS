@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
-<th:block th:replace="retrieve/create.html::headerfiles('Example Page')"></th:block>
 <body>
 <script>
     async function postToApi(event) {
@@ -10,7 +9,7 @@
         const last_Name = document.querySelector("#Last_name").value;
         const role = document.querySelector("#Role").value;
         const salary = document.querySelector("#Salary").value;
-        const response = await fetch('api/configurations', {
+        const response = await fetch('/retrieve/employees', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +23,7 @@
 </script>
 <main>
     <div class="container">
-        <h1>Crear una nueva configuracion</h1>
+        <h1>Add a new employee</h1>
         <form onsubmit="postToApi(event)">
             <div class="form-group">
                 <label for="employee_id">Employee id</label>
@@ -35,19 +34,19 @@
                 <input type="text" class="form-control" id="first_Name" placeholder="First Name">
             </div>
             <div class="form-group">
-                <label for="last_Name">First Name</label>
+                <label for="last_Name">Last Name</label>
                 <input type="text" class="form-control" id="last_Name" placeholder="Last Name">
             </div>
             <div class="form-group">
-                <label for="role">First Name</label>
+                <label for="role">Role</label>
                 <input type="text" class="form-control" id="role" placeholder="Role">
             </div>
             <div class="form-group">
-                <label for="salary">First Name</label>
+                <label for="salary">Salary</label>
                 <input type="text" class="form-control" id="salary" placeholder="Salary">
             </div>
             <br>
-            <input type="submit" class="btn btn-primary" value="Guardar Configuracion">
+            <input type="submit" class="btn btn-primary" value="Save employee">
         </form>
     </div>
 </main>
