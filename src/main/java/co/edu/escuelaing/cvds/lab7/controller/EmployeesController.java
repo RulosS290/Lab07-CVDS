@@ -22,8 +22,14 @@ public class EmployeesController {
     }
 
     @GetMapping("/read")
-    public String example(Model model) {
+    public String read(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "employees";
+    }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.addAttribute("employees", employeeService.getAllEmployees());
+        return "create";
     }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
+<th:block th:replace="retrieve/create.html::headerfiles('Example Page')"></th:block>
+<body>
+<script>
+    async function postToApi(event) {
+        event.preventDefault();
+        const employee_id = document.querySelector("#Employee_id").value;
+        const first_Name = document.querySelector("#First_name").value;
+        const last_Name = document.querySelector("#Last_name").value;
+        const role = document.querySelector("#Role").value;
+        const salary = document.querySelector("#Salary").value;
+        const response = await fetch('api/configurations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({Employee_id: employee_id, First_name: first_Name, Last_name: last_Name, Role: role, Salary; salary}),
+        });
+        const data = await response.json();
+        console.log("data", data);
+        addDataToTable(data);
+    }
+</script>
+<main>
+    <div class="container">
+        <h1>Crear una nueva configuracion</h1>
+        <form onsubmit="postToApi(event)">
+            <div class="form-group">
+                <label for="employee_id">Employee id</label>
+                <input type="text" class="form-control" id="Employee_id" placeholder="id">
+            </div>
+            <div class="form-group">
+                <label for="first_Name">First Name</label>
+                <input type="text" class="form-control" id="first_Name" placeholder="First Name">
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Guardar Configuracion">
+        </form>
+    </div>
+</main>
+</body>
+</html>
