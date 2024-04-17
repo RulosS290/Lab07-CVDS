@@ -1,8 +1,6 @@
 package co.edu.escuelaing.cvds.lab7.controller;
 
-import co.edu.escuelaing.cvds.lab7.model.Configuration;
 import co.edu.escuelaing.cvds.lab7.model.Employee;
-import co.edu.escuelaing.cvds.lab7.service.ConfigurationService;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,13 +22,13 @@ public class EmployeesController {
 
     @GetMapping("/read")
     public String read(Model model) {
-        model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("employee", employeeService.getAllEmployees());
         return "employees";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("employees", employeeService.getAllEmployees());
+        model.addAttribute("employee", employeeService.getAllEmployees());
         return "create";
     }
 

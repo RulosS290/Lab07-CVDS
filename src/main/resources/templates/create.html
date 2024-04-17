@@ -1,20 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
+<th:block th:replace="fragments/general.html::headerfiles('Example Page')"></th:block>
 <body>
+<header th:replace="fragments/general::header"/>
 <script>
-
     function addDataToTable(dataEmployee) {
         let dataHtml = `<tr>
-                <th>Nombre Configuración</th>
-                <th>Valor Configuración</th>
+                <th>id Employee</th>
+                <th>First Name Employee</th>
+                <th>Last Name Employee</th>
+                <th>Role Employee</th>
+                <th>SalaryEmployee</th>
             </tr>`;
         dataHtml += dataEmployee.map((employee) => {
             return `<tr>
-                        <td>${employee.Employee_id}</td>
-                        <td>${employee.First_name}</td>
-                        <td>${employee.Last_name}</td>
-                        <td>${employee.Role}</td>
-                        <td>${employee.Salary}</td>
+                        <td>${employee.employee_id}</td>
+                        <td>${employee.first_name}</td>
+                        <td>${employee.last_name}</td>
+                        <td>${employee.role}</td>
+                        <td>${employee.salary}</td>
                     </tr>`
         }).join("");
         console.log("dataHtml", dataHtml);
@@ -23,7 +27,7 @@
     }
 
     async function getFromApi() {
-        const response = await fetch('retrieve/employees');
+        const response = await fetch('/retrieve/employees');
         const data = await response.json();
         console.log("data", data);
         addDataToTable(data);
@@ -31,17 +35,17 @@
 
     async function postToApi(event) {
         event.preventDefault();
-        const Employee_id = document.querySelector("#Employee_id").value;
-        const First_name = document.querySelector("#First_name").value;
-        const Last_name = document.querySelector("#Last_name").value;
-        const Role = document.querySelector("#Role").value;
-        const Salary = document.querySelector("#Salary").value;
+        const employee_id = document.querySelector("#employee_id").value;
+        const first_name = document.querySelector("#first_name").value;
+        const last_name = document.querySelector("#last_name").value;
+        const role= document.querySelector("#role").value;
+        const salary = document.querySelector("#salary").value;
         const response = await fetch('/retrieve/employees', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({Employee_id: Employee_id, First_name: First_name, Last_name: Last_name, Role: Role, Salary: Salary}),
+            body: JSON.stringify({employee_id: employee_id, first_name: first_name, last_name: last_name, role: role, salary: salary}),
         });
         const data = await response.json();
         console.log("data", data);
@@ -58,30 +62,30 @@
     </div>
     <br><br><br>
     <div class="container">
-        <h1>Add a new employee</h1>
+        <h2>Crear una nueva configuración</h2>
         <form onsubmit="postToApi(event)">
             <div class="form-group">
-                <label for="employee_id">Employee id</label>
-                <input type="text" class="form-control" id="Employee_id" placeholder="id">
+                <label for="employee_id">id</label>
+                <input type="text" class="form-control" id="employee_id" placeholder="id">
             </div>
             <div class="form-group">
-                <label for="first_Name">First Name</label>
-                <input type="text" class="form-control" id="first_Name" placeholder="First Name">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="f name">
             </div>
             <div class="form-group">
-                <label for="last_Name">Last Name</label>
-                <input type="text" class="form-control" id="last_Name" placeholder="Last Name">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" placeholder="l name">
             </div>
             <div class="form-group">
                 <label for="role">Role</label>
-                <input type="text" class="form-control" id="role" placeholder="Role">
+                <input type="text" class="form-control" id="role" placeholder="r">
             </div>
             <div class="form-group">
                 <label for="salary">Salary</label>
-                <input type="text" class="form-control" id="salary" placeholder="Salary">
+                <input type="text" class="form-control" id="salary" placeholder="s">
             </div>
             <br>
-            <input type="submit" class="btn btn-primary" value="Save employee">
+            <input type="submit" class="btn btn-primary" value="Guardar Configuración">
         </form>
     </div>
 </main>
