@@ -1,5 +1,3 @@
-CREATE TABLE TEST(
-    id integer primary key not null
-);
-
-DROP TABLE TEST;
+INSERT INTO employee (id ,first_Name, last_Name) VALUES (1, 'Daniel', 'Torres');
+INSERT INTO employee (id ,first_Name, last_Name) VALUES (2, 'Diego', 'Castellanos');
+INSERT INTO employee (id ,first_Name, last_Name) VALUES (3, 'Miguel', 'Tellez');
