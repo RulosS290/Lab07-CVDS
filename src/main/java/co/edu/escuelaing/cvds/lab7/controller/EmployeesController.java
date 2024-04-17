@@ -1,6 +1,7 @@
 package co.edu.escuelaing.cvds.lab7.controller;
 
 import co.edu.escuelaing.cvds.lab7.model.Configuration;
+import co.edu.escuelaing.cvds.lab7.model.Employee;
 import co.edu.escuelaing.cvds.lab7.service.ConfigurationService;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,16 @@ public class EmployeesController {
     public String create(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "create";
+    }
+
+    @GetMapping("/employees")
+    @ResponseBody
+    public List<Employee> exampleEmployees() {return  employeeService.getAllEmployees();}
+
+    @PostMapping("/employees")
+    @ResponseBody
+    public List<Employee> exampleEmployees(@RequestBody Employee employee) {
+        employeeService.addEmployee(employee);
+        return employeeService.getAllEmployees();
     }
 }
