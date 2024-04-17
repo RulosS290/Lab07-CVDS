@@ -15,7 +15,7 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({Employee_id: employee_id, First_name: first_Name, Last_name: last_Name, Role: role, Salary; salary}),
+            body: JSON.stringify({Employee_id: employee_id, First_name: first_Name, Last_name: last_Name, Role: role, Salary: salary}),
         });
         const data = await response.json();
         console.log("data", data);
@@ -33,6 +33,18 @@
             <div class="form-group">
                 <label for="first_Name">First Name</label>
                 <input type="text" class="form-control" id="first_Name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label for="last_Name">First Name</label>
+                <input type="text" class="form-control" id="last_Name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <label for="role">First Name</label>
+                <input type="text" class="form-control" id="role" placeholder="Role">
+            </div>
+            <div class="form-group">
+                <label for="salary">First Name</label>
+                <input type="text" class="form-control" id="salary" placeholder="Salary">
             </div>
             <br>
             <input type="submit" class="btn btn-primary" value="Guardar Configuracion">
