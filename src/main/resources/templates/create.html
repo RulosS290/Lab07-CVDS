@@ -2,19 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
 <body>
 <script>
+
+    function addDataToTable(dataEmployee) {
+        let dataHtml = `<tr>
+                <th>Nombre Configuración</th>
+                <th>Valor Configuración</th>
+            </tr>`;
+        dataHtml += dataEmployee.map((employee) => {
+            return `<tr>
+                        <td>${employee.Employee_id}</td>
+                        <td>${employee.First_name}</td>
+                        <td>${employee.Last_name}</td>
+                        <td>${employee.Role}</td>
+                        <td>${employee.Salary}</td>
+                    </tr>`
+        }).join("");
+        console.log("dataHtml", dataHtml);
+        const table = document.querySelector("#employees");
+        table.innerHTML = dataHtml;
+    }
+
+    async function getFromApi() {
+        const response = await fetch('retrieve/employees');
+        const data = await response.json();
+        console.log("data", data);
+        addDataToTable(data);
+    }
+
     async function postToApi(event) {
         event.preventDefault();
-        const employee_id = document.querySelector("#Employee_id").value;
-        const first_Name = document.querySelector("#First_name").value;
-        const last_Name = document.querySelector("#Last_name").value;
-        const role = document.querySelector("#Role").value;
-        const salary = document.querySelector("#Salary").value;
+        const Employee_id = document.querySelector("#Employee_id").value;
+        const First_name = document.querySelector("#First_name").value;
+        const Last_name = document.querySelector("#Last_name").value;
+        const Role = document.querySelector("#Role").value;
+        const Salary = document.querySelector("#Salary").value;
         const response = await fetch('/retrieve/employees', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({Employee_id: employee_id, First_name: first_Name, Last_name: last_Name, Role: role, Salary: salary}),
+            body: JSON.stringify({Employee_id: Employee_id, First_name: First_name, Last_name: Last_name, Role: Role, Salary: Salary}),
         });
         const data = await response.json();
         console.log("data", data);
@@ -22,6 +49,14 @@
     }
 </script>
 <main>
+    <br>
+    <div class="container">
+        <button onclick="getFromApi()" type="button" class="btn btn-primary">Mostrar todas las configuraciones desde una API</button>
+        <br><br>
+        <table id="employees" class="table">
+        </table>
+    </div>
+    <br><br><br>
     <div class="container">
         <h1>Add a new employee</h1>
         <form onsubmit="postToApi(event)">
