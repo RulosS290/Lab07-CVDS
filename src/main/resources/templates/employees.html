@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Empleados</title>
+    <style>
+        /* Define el ancho de las columnas */
+        th, td {
+            width: 150px; /* Ajusta el valor según tus necesidades */
+        }
+    </style>
 </head>
 <body>
 <h1>Lista de Empleados</h1>
-<table border="1">
+<table border="20">
     <thead>
     <tr>
-        <th>EMPLOYEE ID</th>
-        <th>FIRST NAME</th>
-        <th>LAST NAME</th>
-        <th>ROLE</th>
-        <th>SALARY</th>
+        <th style="width: 100px;">EMPLOYEE ID</th> <!-- También puedes ajustar individualmente el ancho de cada columna -->
+        <th style="width: 200px;">FIRST NAME</th>
+        <th style="width: 200px;">LAST NAME</th>
+        <th style="width: 100px;">ROLE</th>
+        <th style="width: 100px;">SALARY</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="employee : ${employees}">
         <td th:text="${employee.Employee_id}"></td>
         <td th:text="${employee.First_name}"></td>
-        <td th:text="${employee.Last_Name}"></td>
+        <td th:text="${employee.Last_name}"></td>
         <td th:text="${employee.Role}"></td>
         <td th:text="${employee.Salary}"></td>
     </tr>
@@ -29,3 +35,4 @@
 </table>
 </body>
 </html>
+
