@@ -1,8 +1,46 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"><!-- //NOSONAR -->
-<th:block th:replace="fragments/general.html::headerfiles('Create Employee')"></th:block>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding-top: 20px;
+        }
+        header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
 <body>
-<header>CREATE</header>
+<header>Create Employee</header>
 <script>
     function addDataToTable(dataEmployee) {
         let dataHtml = `<tr>
@@ -53,36 +91,34 @@
     }
 </script>
 <main>
-    <br>
     <div class="container">
-        <button onclick="getFromApi()" type="button" class="btn btn-primary">Show all configurations from one API</button>
+        <button onclick="getFromApi()" type="button" class="btn btn-primary">Show all employees</button>
         <br><br>
         <table id="employees" class="table">
         </table>
     </div>
-    <br><br><br>
     <div class="container">
         <h2>Create a new employee</h2>
         <form onsubmit="postToApi(event)">
             <div class="form-group">
                 <label for="employee_id">Id</label>
-                <input type="text" class="form-control" id="employee_id">
+                <input type="text" class="form-control" id="employee_id" required>
             </div>
             <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name">
+                <input type="text" class="form-control" id="first_name" required>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name">
+                <input type="text" class="form-control" id="last_name" required>
             </div>
             <div class="form-group">
                 <label for="role">Role</label>
-                <input type="text" class="form-control" id="role">
+                <input type="text" class="form-control" id="role" required>
             </div>
             <div class="form-group">
                 <label for="salary">Salary</label>
-                <input type="text" class="form-control" id="salary">
+                <input type="text" class="form-control" id="salary" required>
             </div>
             <br>
             <input type="submit" class="btn btn-primary" value="Save employee">
