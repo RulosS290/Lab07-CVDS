@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Employees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>List of Employees</h1>
+<table>
+    <thead>
+    <tr>
+        <th>EMPLOYEE ID</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>ROLE</th>
+        <th>SALARY</th>
+        <th>ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through employees -->
+    <tr th:each="employee : ${employee}">
+        <td th:text="${employee.employee_id}"></td>
+        <td th:text="${employee.first_name}"></td>
+        <td th:text="${employee.last_name}"></td>
+        <td th:text="${employee.role}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td>
+            <!-- Update button -->
+            <button onclick="window.location.href='/retrieve/update/${employee.employee_id}'">Update</button>
+            <!-- Delete button -->
+            <button onclick="window.location.href='/retrieve/delete/${employee.employee_id}'">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer>
+    <button onclick="window.location.href='/retrieve/create'">New</button>
+</footer>
+</body>
+</html>
+
