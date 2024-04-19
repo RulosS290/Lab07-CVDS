@@ -66,16 +66,17 @@
     <tbody>
     <!-- Loop through employees -->
     <tr th:each="employee : ${employee}">
-        <td th:text="${employee.employee_id}"></td>
+        <td th:text="${employee.id}"></td>
         <td th:text="${employee.first_name}"></td>
         <td th:text="${employee.last_name}"></td>
         <td th:text="${employee.role}"></td>
         <td th:text="${employee.salary}"></td>
         <td>
             <!-- Update button -->
-            <button onclick="window.location.href='/retrieve/update/${employee.employee_id}'">Update</button>
+            <button onclick="window.location.href='/retrieve/update/' +
+">Update</button>
             <!-- Delete button -->
-            <button onclick="window.location.href='/retrieve/delete/${employee.employee_id}'">Delete</button>
+            <button onclick="window.location.href='/retrieve/delete/' + String(employee.id)">Delete</button>
         </td>
     </tr>
     </tbody>

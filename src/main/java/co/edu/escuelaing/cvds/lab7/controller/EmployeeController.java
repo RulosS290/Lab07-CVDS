@@ -1,7 +1,6 @@
 package co.edu.escuelaing.cvds.lab7.controller;
 
 import co.edu.escuelaing.cvds.lab7.model.Employee;
-import co.edu.escuelaing.cvds.lab7.model.ToDoItem;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +11,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/retrieve")
-public class EmployeesController {
+public class EmployeeController {
 
     private final EmployeeService employeeService;
 
     @Autowired
-    public EmployeesController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -34,7 +33,7 @@ public class EmployeesController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String getEmployee(@PathVariable int id, Model model) {
+    public String getEmployee(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.getEmployee(id);
         model.addAttribute("employee", employee);
         return "delete";

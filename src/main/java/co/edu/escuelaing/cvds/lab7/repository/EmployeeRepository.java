@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmployeesListRepository extends JpaRepository<Employee, Integer> {
-    public List<Employee> findById(int Employee_id);
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+    public List<Employee> findByid(Integer id);
 
 }

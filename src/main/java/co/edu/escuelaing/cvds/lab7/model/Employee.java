@@ -13,8 +13,8 @@ import lombok.Setter;
 @Getter
 public class Employee {
     @Id
-    @Column(name = "EMPLOYEE_ID")
-    private int Employee_id;
+    @Column(name = "ID")
+    private Integer id;
     @Column(name = "FIRST_NAME")
     private String First_name;
     @Column(name = "LAST_NAME")
@@ -24,8 +24,8 @@ public class Employee {
     @Column(name = "SALARY")
     private Double Salary;
 
-    public Employee(int Employee_id, String First_name, String Last_name, String Role, Double Salary) {
-        this.Employee_id = Employee_id;
+    public Employee(Integer id, String First_name, String Last_name, String Role, Double Salary) {
+        this.id = id;
         this.First_name = First_name;
         this.Last_name = Last_name;
         this.Role = Role;

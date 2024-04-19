@@ -44,7 +44,7 @@
 <script>
     function addDataToTable(dataEmployee) {
         let dataHtml = `<tr>
-                <th>id</th>
+                <th>Employee Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Role</th>
@@ -52,7 +52,7 @@
             </tr>`;
         dataHtml += dataEmployee.map((employee) => {
             return `<tr>
-                        <td>${employee.employee_id}</td>
+                        <td>${employee.id}</td>
                         <td>${employee.first_name}</td>
                         <td>${employee.last_name}</td>
                         <td>${employee.role}</td>
@@ -73,7 +73,7 @@
 
     async function postToApi(event) {
         event.preventDefault();
-        const employee_id = document.querySelector("#employee_id").value;
+        const id = document.querySelector("#id").value;
         const first_name = document.querySelector("#first_name").value;
         const last_name = document.querySelector("#last_name").value;
         const role= document.querySelector("#role").value;
@@ -83,11 +83,19 @@
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({employee_id: employee_id, first_name: first_name, last_name: last_name, role: role, salary: salary}),
+            body: JSON.stringify({id: id, first_name: first_name, last_name: last_name, role: role, salary: salary}),
         });
         const data = await response.json();
         console.log("data", data);
         addDataToTable(data);
+        clearFormFields();
+    }
+    function clearFormFields() {
+        document.querySelector("#id").value = "";
+        document.querySelector("#first_name").value = "";
+        document.querySelector("#last_name").value = "";
+        document.querySelector("#role").value = "";
+        document.querySelector("#salary").value = "";
     }
 </script>
 <main>
@@ -101,8 +109,8 @@
         <h2>Create a new employee</h2>
         <form onsubmit="postToApi(event)">
             <div class="form-group">
-                <label for="employee_id">Id</label>
-                <input type="text" class="form-control" id="employee_id" required>
+                <label for="id">Employee Id</label>
+                <input type="text" class="form-control" id="id" required>
             </div>
             <div class="form-group">
                 <label for="first_name">First Name</label>
