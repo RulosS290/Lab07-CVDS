@@ -78,6 +78,13 @@
         const last_name = document.querySelector("#last_name").value;
         const role= document.querySelector("#role").value;
         const salary = document.querySelector("#salary").value;
+
+        // Verificar si algún campo está vacío
+        if (id === "" || first_name === "" || last_name === "" || role === "" || salary === "") {
+            alert("Por favor, complete todos los campos.");
+            return; // No se envían los datos si hay campos vacíos
+        }
+
         const response = await fetch('/retrieve/employees', {
             method: 'POST',
             headers: {
