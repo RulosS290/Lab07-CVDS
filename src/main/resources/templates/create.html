@@ -85,6 +85,13 @@
             return; // No se envían los datos si hay campos vacíos
         }
 
+        // Verificar si el ID ya existe en la tabla
+        const existingIds = Array.from(document.querySelectorAll('#employees tr td:first-child')).map(td => td.textContent);
+        if (existingIds.includes(id)) {
+            alert("El ID de empleado ya existe. Por favor, elija un ID único.");
+            return;
+        }
+
         const response = await fetch('/retrieve/employees', {
             method: 'POST',
             headers: {
