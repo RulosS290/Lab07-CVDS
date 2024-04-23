@@ -32,12 +32,19 @@ public class EmployeeController {
         return "create";
     }
 
-    @RequestMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String getEmployee(@PathVariable Integer id, Model model) {
         Employee employee = employeeService.getEmployee(id);
         model.addAttribute("employee", employee);
         return "delete";
     }
+
+    @PostMapping("/delete/{id}")
+    public String deleteEmployee(@PathVariable Integer id) {
+        employeeService.deleteEmployee(id);
+        return "redirect:/retrieve/read";
+    }
+
 
     @GetMapping("/employees")
     @ResponseBody

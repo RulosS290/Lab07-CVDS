@@ -21,7 +21,7 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(Integer id) {
-        return employeeRepository.findByid(id).get(1);
+        return employeeRepository.findByid(id).get(0);
     }
 
     public List<Employee> getAllEmployees() {
