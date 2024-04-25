@@ -28,7 +28,14 @@
 <div class="container">
   <h1>Employee Deleted</h1>
   <p>The employee has been successfully deleted.</p>
+  <p>Details of the deleted employee:</p>
+  <p>ID: <span th:text="${employee.id}"></span></p>
+  <p>First Name: <span th:text="${employee.first_name}"></span></p>
+  <p>Last Name: <span th:text="${employee.last_name}"></span></p>
+  <p>Role: <span th:text="${employee.role}"></span></p>
+  <p>Salary: <span th:text="${employee.salary}"></span></p>
   <p><a href="/retrieve/read">Return to employee list</a></p>
 </div>
 </body>
 </html>
+

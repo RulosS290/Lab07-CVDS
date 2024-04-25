@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/retrieve")
@@ -22,7 +23,7 @@ public class EmployeeController {
 
     @GetMapping("/read")
     public String read(Model model) {
-        model.addAttribute("employee", employeeService.getAllEmployees());
+        model.addAttribute("employees", employeeService.getAllEmployees());
         return "read";
     }
 
@@ -55,5 +56,32 @@ public class EmployeeController {
     public List<Employee> exampleEmployees(@RequestBody Employee employee) {
         employeeService.addEmployee(employee);
         return employeeService.getAllEmployees();
+    }
+    @GetMapping("/update/{id}")
+    public String getEmployeeForUpdate(@PathVariable Integer id, Model model) {
+        Employee employee = employeeService.getEmployee(id);
+        model.addAttribute("employee", employee);
+        return "update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateEmployee(@PathVariable("id") Integer id, @RequestBody Map<String, String> updateData) {
+        Employee employee = employeeService.getEmployee(id);
+        if (employee == null) {
+            return "redirect:/error";
+        }
+
+
+        if (updateData.containsKey("first_name")) {
+            employee.setFirst_name(updateData.get("first_name"));
+        }
+        if (updateData.containsKey("last_name")) {
+            employee.setLast_name(updateData.get("last_name"));
+        }
+
+
+        employeeService.updateEmployee(employee);
+
+        return "redirect:/retrieve/read";
     }
 }

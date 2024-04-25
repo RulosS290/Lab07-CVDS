@@ -60,6 +60,7 @@ public class Lab7Application {
 			employeeService.addEmployee(new Employee(2,"Diego", "Castellanos", "Development Team", 1200000.0));
 			employeeService.addEmployee(new Employee(3, "Miguel", "Tellez", "Development Team", -50.0));
 
+
 		};
 	}
 
